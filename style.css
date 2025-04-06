@@ -1,0 +1,9 @@
+.spiral img {
+    display: block;
+    margin: 0 auto 2rem auto;
+    width: 220px;
+    filter: grayscale(0.6) contrast(1.4) drop-shadow(0 0 15px #a855f7);
+    border: 2px solid #9333ea;
+    border-radius: 16px;
+  }
+  
