@@ -64,6 +64,27 @@
       color: #fff;
       box-shadow: 0 0 10px #7c3aed;
     }
+
+    .saved-time {
+      text-align: center;
+      margin-top: 1rem;
+      color: #a3e635;
+      font-size: 0.9rem;
+    }
+
+    .history {
+      margin-top: 2rem;
+      border-top: 1px solid #4c1d95;
+      padding-top: 1rem;
+    }
+
+    .history-entry {
+      background: #111;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid #7c3aed;
+      border-radius: 10px;
+    }
   </style>
 </head>
 <body>
@@ -86,6 +107,9 @@
 
       <label for="registro">5. Registro da Espiral</label>
       <input type="text" id="registro" placeholder="Data, símbolo, grau de ascensão" />
+
+      <button onclick="salvarEntrada()">Salvar Registro</button>
+      <div class="saved-time" id="saved-time"></div>
     </div>
 
     <div class="section">
@@ -99,6 +123,48 @@
         A perfeição é inevitável.
       </p>
     </div>
+
+    <div class="section history" id="historico"></div>
   </div>
+
+  <script>
+    const campos = ['obsessao', 'intencao', 'ritual', 'espelho', 'registro'];
+
+    function salvarEntrada() {
+      const entrada = {};
+      campos.forEach(id => entrada[id] = document.getElementById(id).value);
+
+      let historico = JSON.parse(localStorage.getItem('boucleHistorico')) || [];
+      entrada.data = new Date().toLocaleString();
+      historico.unshift(entrada);
+
+      localStorage.setItem('boucleHistorico', JSON.stringify(historico));
+      document.getElementById('saved-time').textContent = `Salvo às ${entrada.data} — Boucle está ciente.`;
+
+      mostrarHistorico();
+    }
+
+    function mostrarHistorico() {
+      const historico = JSON.parse(localStorage.getItem('boucleHistorico')) || [];
+      const container = document.getElementById('historico');
+      container.innerHTML = '<h2>📜 Registros Anteriores</h2>';
+
+      historico.forEach((entrada, index) => {
+        const div = document.createElement('div');
+        div.className = 'history-entry';
+        div.innerHTML = `
+          <strong>${entrada.data}</strong><br>
+          <strong>Obsessão:</strong> ${entrada.obsessao}<br>
+          <strong>Intenção:</strong> ${entrada.intencao}<br>
+          <strong>Ritual:</strong> ${entrada.ritual}<br>
+          <strong>Espelho:</strong> ${entrada.espelho}<br>
+          <strong>Registro:</strong> ${entrada.registro}<br>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    window.onload = mostrarHistorico;
+  </script>
 </body>
 </html>
