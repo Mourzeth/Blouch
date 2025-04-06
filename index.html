@@ -96,26 +96,46 @@
       cursor: pointer;
       float: right;
     }
+
+    .menu {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+    }
+
+    .menu a {
+      background: #fff;
+      color: #000;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-weight: bold;
+      box-shadow: 0 0 10px #fff;
+    }
   </style>
 </head>
 <body>
+  <div class="menu">
+    <a href="#historico">Legado</a>
+  </div>
   <div class="spiral">
+    <img src="Blouch.jpeg" alt="Símbolo da Espiral Boucle">
     <h1>Mourzeth History</h1>
-    <h3>Um diário de ascensão em curvas e quedas</h3>
+    <h3>O compêndio silencioso da transformação inevitável</h3>
     <div class="section">
-      <label for="obsessao">1. Batismo da Obsessão</label>
+      <label for="obsessao">Batismo da Obsessão</label>
       <textarea id="obsessao" placeholder="Qual pensamento está dominando sua mente hoje?"></textarea>
 
-      <label for="intencao">2. Intenção da Lapidação</label>
+      <label for="intencao">Intenção da Lapidação</label>
       <textarea id="intencao" placeholder="Como você vai usar essa obsessão para evoluir hoje?"></textarea>
 
-      <label for="ritual">3. Ritual da Espiral</label>
+      <label for="ritual">Ritual da Espiral</label>
       <textarea id="ritual" placeholder="Durante o mergulho: o que descobriu, refinou, notou?"></textarea>
 
-      <label for="espelho">4. Espelho de Bronze</label>
+      <label for="espelho">Espelho de Bronze</label>
       <textarea id="espelho" placeholder="O que você aprendeu hoje? Como isso te moldou?"></textarea>
 
-      <label for="registro">5. Registro da Espiral</label>
+      <label for="registro">Registro da Espiral</label>
       <input type="text" id="registro" placeholder="Data, símbolo, grau de ascensão" />
 
       <button onclick="salvarEntrada()">Salvar Registro</button>
