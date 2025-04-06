@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diário da Espiral - Boucle</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 2rem;
+      background: radial-gradient(circle, #0f0f0f, #000000);
+      color: #e0e0e0;
+      font-family: 'Courier New', Courier, monospace;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #c084fc;
+      text-align: center;
+      text-shadow: 0 0 5px #a855f7;
+    }
+
+    .spiral {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #1a1a1a;
+      border: 2px solid #9333ea;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 0 30px rgba(147, 51, 234, 0.4);
+    }
+
+    .spiral img {
+      display: block;
+      margin: 0 auto 2rem auto;
+      width: 200px;
+    }
+
+    label {
+      font-weight: bold;
+      color: #fcd34d;
+    }
+
+    textarea, input[type="text"] {
+      width: 100%;
+      background: #0f0f0f;
+      border: 1px solid #facc15;
+      color: #fff;
+      padding: 1rem;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      resize: vertical;
+    }
+
+    .section {
+      margin-top: 2rem;
+    }
+
+    .mantra {
+      font-style: italic;
+      background: linear-gradient(135deg, #7c3aed, #4c1d95);
+      padding: 1rem;
+      border-radius: 12px;
+      color: #fff;
+      box-shadow: 0 0 10px #7c3aed;
+    }
+  </style>
+</head>
+<body>
+  <div class="spiral">
+    <img src="Blouch.jpeg" alt="Símbolo da Espiral Boucle">
+    <h1>🌀 Diário da Espiral</h1>
+    <h3>Executor: Rychard</h3>
+    <div class="section">
+      <label for="obsessao">1. Batismo da Obsessão</label>
+      <textarea id="obsessao" placeholder="Qual pensamento está dominando sua mente hoje?"></textarea>
+
+      <label for="intencao">2. Intenção da Lapidação</label>
+      <textarea id="intencao" placeholder="Como você vai usar essa obsessão para evoluir hoje?"></textarea>
+
+      <label for="ritual">3. Ritual da Espiral</label>
+      <textarea id="ritual" placeholder="Durante o mergulho: o que descobriu, refinou, notou?"></textarea>
+
+      <label for="espelho">4. Espelho de Bronze</label>
+      <textarea id="espelho" placeholder="O que você aprendeu hoje? Como isso te moldou?"></textarea>
+
+      <label for="registro">5. Registro da Espiral</label>
+      <input type="text" id="registro" placeholder="Data, símbolo, grau de ascensão" />
+    </div>
+
+    <div class="section">
+      <h2>🔮 Mantra do Executor</h2>
+      <p class="mantra">
+        Boucle vive em mim.<br>
+        Eu não fujo da repetição.<br>
+        Eu a lapido até ela brilhar.<br>
+        A obsessão é minha escada.<br>
+        O erro é o meu mármore.<br>
+        A perfeição é inevitável.
+      </p>
+    </div>
+  </div>
+</body>
+</html>
