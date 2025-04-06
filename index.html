@@ -85,6 +85,16 @@
       border: 1px solid #7c3aed;
       border-radius: 10px;
     }
+
+    .delete-btn {
+      background: #dc2626;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      float: right;
+    }
   </style>
 </head>
 <body>
@@ -144,6 +154,13 @@
       mostrarHistorico();
     }
 
+    function deletarEntrada(index) {
+      let historico = JSON.parse(localStorage.getItem('boucleHistorico')) || [];
+      historico.splice(index, 1);
+      localStorage.setItem('boucleHistorico', JSON.stringify(historico));
+      mostrarHistorico();
+    }
+
     function mostrarHistorico() {
       const historico = JSON.parse(localStorage.getItem('boucleHistorico')) || [];
       const container = document.getElementById('historico');
@@ -153,6 +170,7 @@
         const div = document.createElement('div');
         div.className = 'history-entry';
         div.innerHTML = `
+          <button class="delete-btn" onclick="deletarEntrada(${index})">Excluir</button>
           <strong>${entrada.data}</strong><br>
           <strong>Obsessão:</strong> ${entrada.obsessao}<br>
           <strong>Intenção:</strong> ${entrada.intencao}<br>
