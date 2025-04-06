@@ -3,31 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Diário da Espiral - Boucle</title>
+  <title>Mourzeth History - Boucle</title>
   <style>
     body {
       margin: 0;
       padding: 2rem;
-      background: radial-gradient(circle, #0f0f0f, #000000);
-      color: #e0e0e0;
-      font-family: 'Courier New', Courier, monospace;
-      line-height: 1.6;
+      background: #000;
+      color: #fff;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      line-height: 1.7;
     }
 
     h1, h2, h3 {
-      color: #c084fc;
+      color: #ffffff;
       text-align: center;
-      text-shadow: 0 0 5px #a855f7;
+      text-shadow: 0 0 10px #ffffff;
     }
 
     .spiral {
       max-width: 900px;
       margin: 0 auto;
-      background: #1a1a1a;
-      border: 2px solid #9333ea;
+      background: #111;
+      border: 2px solid #ffffff;
       border-radius: 20px;
       padding: 2rem;
-      box-shadow: 0 0 30px rgba(147, 51, 234, 0.4);
+      box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
     }
 
     .spiral img {
@@ -38,18 +38,19 @@
 
     label {
       font-weight: bold;
-      color: #fcd34d;
+      color: #ffffff;
     }
 
     textarea, input[type="text"] {
       width: 100%;
-      background: #0f0f0f;
-      border: 1px solid #facc15;
+      background: #000;
+      border: 1px solid #ffffff;
       color: #fff;
       padding: 1rem;
       border-radius: 10px;
       margin-bottom: 1.5rem;
       resize: vertical;
+      font-family: 'Georgia', 'Times New Roman', serif;
     }
 
     .section {
@@ -58,31 +59,31 @@
 
     .mantra {
       font-style: italic;
-      background: linear-gradient(135deg, #7c3aed, #4c1d95);
+      background: linear-gradient(135deg, #ffffff20, #ffffff10);
       padding: 1rem;
       border-radius: 12px;
       color: #fff;
-      box-shadow: 0 0 10px #7c3aed;
+      box-shadow: 0 0 20px #fff;
     }
 
     .saved-time {
       text-align: center;
       margin-top: 1rem;
-      color: #a3e635;
+      color: #ffffff;
       font-size: 0.9rem;
     }
 
     .history {
       margin-top: 2rem;
-      border-top: 1px solid #4c1d95;
+      border-top: 1px solid #fff;
       padding-top: 1rem;
     }
 
     .history-entry {
-      background: #111;
+      background: #222;
       padding: 1rem;
       margin-bottom: 1rem;
-      border: 1px solid #7c3aed;
+      border: 1px solid #fff;
       border-radius: 10px;
     }
 
@@ -100,8 +101,8 @@
 <body>
   <div class="spiral">
     <img src="Blouch.jpeg" alt="Símbolo da Espiral Boucle">
-    <h1>🌀 Diário da Espiral</h1>
-    <h3>Executor: Rychard</h3>
+    <h1>Mourzeth History</h1>
+    <h3>Um diário de ascensão em curvas e quedas</h3>
     <div class="section">
       <label for="obsessao">1. Batismo da Obsessão</label>
       <textarea id="obsessao" placeholder="Qual pensamento está dominando sua mente hoje?"></textarea>
@@ -123,7 +124,7 @@
     </div>
 
     <div class="section">
-      <h2>🔮 Mantra do Executor</h2>
+      <h2>Mantra do Executor</h2>
       <p class="mantra">
         Boucle vive em mim.<br>
         Eu não fujo da repetição.<br>
@@ -164,7 +165,7 @@
     function mostrarHistorico() {
       const historico = JSON.parse(localStorage.getItem('boucleHistorico')) || [];
       const container = document.getElementById('historico');
-      container.innerHTML = '<h2>📜 Registros Anteriores</h2>';
+      container.innerHTML = '<h2>Registros Anteriores</h2>';
 
       historico.forEach((entrada, index) => {
         const div = document.createElement('div');
