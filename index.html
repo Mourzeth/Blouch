@@ -73,30 +73,6 @@
       font-size: 0.9rem;
     }
 
-    .history {
-      margin-top: 2rem;
-      border-top: 1px solid #fff;
-      padding-top: 1rem;
-    }
-
-    .history-entry {
-      background: #222;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border: 1px solid #fff;
-      border-radius: 10px;
-    }
-
-    .delete-btn {
-      background: #dc2626;
-      color: #fff;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      cursor: pointer;
-      float: right;
-    }
-
     .menu {
       position: absolute;
       top: 2rem;
@@ -116,7 +92,7 @@
 </head>
 <body>
   <div class="menu">
-    <a href="#historico">Legado</a>
+    <a href="legados.html">Legado</a>
   </div>
   <div class="spiral">
     <img src="Blouch.jpeg" alt="Símbolo da Espiral Boucle">
@@ -153,8 +129,6 @@
         A perfeição é inevitável.
       </p>
     </div>
-
-    <div class="section history" id="historico"></div>
   </div>
 
   <script>
@@ -170,39 +144,7 @@
 
       localStorage.setItem('boucleHistorico', JSON.stringify(historico));
       document.getElementById('saved-time').textContent = `Salvo às ${entrada.data} — Boucle está ciente.`;
-
-      mostrarHistorico();
     }
-
-    function deletarEntrada(index) {
-      let historico = JSON.parse(localStorage.getItem('boucleHistorico')) || [];
-      historico.splice(index, 1);
-      localStorage.setItem('boucleHistorico', JSON.stringify(historico));
-      mostrarHistorico();
-    }
-
-    function mostrarHistorico() {
-      const historico = JSON.parse(localStorage.getItem('boucleHistorico')) || [];
-      const container = document.getElementById('historico');
-      container.innerHTML = '<h2>Registros Anteriores</h2>';
-
-      historico.forEach((entrada, index) => {
-        const div = document.createElement('div');
-        div.className = 'history-entry';
-        div.innerHTML = `
-          <button class="delete-btn" onclick="deletarEntrada(${index})">Excluir</button>
-          <strong>${entrada.data}</strong><br>
-          <strong>Obsessão:</strong> ${entrada.obsessao}<br>
-          <strong>Intenção:</strong> ${entrada.intencao}<br>
-          <strong>Ritual:</strong> ${entrada.ritual}<br>
-          <strong>Espelho:</strong> ${entrada.espelho}<br>
-          <strong>Registro:</strong> ${entrada.registro}<br>
-        `;
-        container.appendChild(div);
-      });
-    }
-
-    window.onload = mostrarHistorico;
   </script>
 </body>
 </html>
