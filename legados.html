@@ -44,6 +44,24 @@
       margin: 0.5rem 0;
     }
 
+    .registro button {
+      margin-top: 1rem;
+      background: #fff;
+      color: #000;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 0 10px #fff;
+    }
+
+    .registro button:hover {
+      background: #000;
+      color: #fff;
+      border: 1px solid #fff;
+    }
+
     .voltar {
       position: absolute;
       top: 2rem;
@@ -74,37 +92,39 @@
 
   <script>
     const senha = "1738";
-    const chave = btoa(senha);
+    const tentativa = prompt("Digite a senha para acessar os Legados:");
+    if (tentativa !== senha) {
+      document.body.innerHTML = '<h1 style="text-align:center; color: #f00; margin-top: 20vh;">Acesso Negado</h1>';
+    } else {
+      const container = document.getElementById('historico');
+      const dadosCrus = localStorage.getItem('boucleHistorico');
+      const historico = JSON.parse(dadosCrus || '[]');
 
-    function descriptografar(textoCriptografado) {
-      try {
-        const texto = atob(textoCriptografado);
-        return JSON.parse(texto);
-      } catch (e) {
-        return [];
+      if (!historico || historico.length === 0) {
+        container.innerHTML = '<p style="text-align:center">Nenhum legado foi registrado ainda.</p>';
+      } else {
+        historico.forEach((entrada, index) => {
+          const registro = document.createElement('div');
+          registro.className = 'registro';
+          registro.innerHTML = `
+            <h3>Registro de ${entrada.data}</h3>
+            <p><strong>Batismo da Obsessão:</strong> ${entrada.obsessao}</p>
+            <p><strong>Intenção da Lapidação:</strong> ${entrada.intencao}</p>
+            <p><strong>Ritual da Espiral:</strong> ${entrada.ritual}</p>
+            <p><strong>Espelho de Bronze:</strong> ${entrada.espelho}</p>
+            <p><strong>Identificação:</strong> ${entrada.registro}</p>
+            <button onclick="deletarRegistro(${index})">Apagar</button>
+          `;
+          container.appendChild(registro);
+        });
       }
     }
 
-    const container = document.getElementById('historico');
-    const dadosCrus = localStorage.getItem('boucleHistorico');
-    const historico = descriptografar(dadosCrus);
-
-    if (!historico || historico.length === 0) {
-      container.innerHTML = '<p style="text-align:center">Nenhum legado foi registrado ainda.</p>';
-    } else {
-      historico.forEach((entrada) => {
-        const registro = document.createElement('div');
-        registro.className = 'registro';
-        registro.innerHTML = `
-          <h3>Registro de ${entrada.data}</h3>
-          <p><strong>Batismo da Obsessão:</strong> ${entrada.obsessao}</p>
-          <p><strong>Intenção da Lapidação:</strong> ${entrada.intencao}</p>
-          <p><strong>Ritual da Espiral:</strong> ${entrada.ritual}</p>
-          <p><strong>Espelho de Bronze:</strong> ${entrada.espelho}</p>
-          <p><strong>Identificação:</strong> ${entrada.registro}</p>
-        `;
-        container.appendChild(registro);
-      });
+    function deletarRegistro(indice) {
+      const historico = JSON.parse(localStorage.getItem('boucleHistorico') || '[]');
+      historico.splice(indice, 1);
+      localStorage.setItem('boucleHistorico', JSON.stringify(historico));
+      location.reload();
     }
   </script>
 </body>
