@@ -19,6 +19,13 @@
       text-shadow: 0 0 10px #fff;
     }
 
+    h2 {
+      text-align: center;
+      font-style: italic;
+      opacity: 0.7;
+      margin-bottom: 3rem;
+    }
+
     .registro {
       background: #111;
       border: 1px solid #fff;
@@ -38,32 +45,54 @@
     }
 
     .voltar {
-      display: block;
-      margin: 0 auto 2rem auto;
-      width: max-content;
+      position: absolute;
+      top: 2rem;
+      left: 2rem;
       padding: 0.5rem 1rem;
-      background: #fff;
-      color: #000;
+      background: transparent;
+      border: 2px solid #fff;
+      color: #fff;
       text-decoration: none;
       border-radius: 10px;
       font-weight: bold;
-      box-shadow: 0 0 10px #fff;
+      box-shadow: 0 0 10px #ffffff80;
+      transition: all 0.3s ease;
+    }
+
+    .voltar:hover {
+      background: #fff;
+      color: #000;
+      box-shadow: 0 0 20px #ffffff;
     }
   </style>
 </head>
 <body>
   <a class="voltar" href="index.html">← Voltar</a>
   <h1>Legados</h1>
+  <h2>Toda obsessão deixa um rastro. Aqui estão os seus.</h2>
   <div id="historico"></div>
 
   <script>
-    const container = document.getElementById('historico');
-    const historico = JSON.parse(localStorage.getItem('boucleHistorico')) || [];
+    const senha = "1738";
+    const chave = btoa(senha);
 
-    if (historico.length === 0) {
+    function descriptografar(textoCriptografado) {
+      try {
+        const texto = atob(textoCriptografado);
+        return JSON.parse(texto);
+      } catch (e) {
+        return [];
+      }
+    }
+
+    const container = document.getElementById('historico');
+    const dadosCrus = localStorage.getItem('boucleHistorico');
+    const historico = descriptografar(dadosCrus);
+
+    if (!historico || historico.length === 0) {
       container.innerHTML = '<p style="text-align:center">Nenhum legado foi registrado ainda.</p>';
     } else {
-      historico.forEach((entrada, index) => {
+      historico.forEach((entrada) => {
         const registro = document.createElement('div');
         registro.className = 'registro';
         registro.innerHTML = `
@@ -80,4 +109,3 @@
   </script>
 </body>
 </html>
-<h2 style="text-align:center; font-style: italic; opacity: 0.7;">Toda obsessão deixa um rastro. Aqui estão os seus.</h2>
